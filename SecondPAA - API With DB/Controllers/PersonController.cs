@@ -17,9 +17,16 @@ namespace SecondPAA___API_With_DB.Controllers
         [HttpGet("/api/person")]
         public ActionResult<Person> ListPerson()
         {
-            PersonContext context = new PersonContext(this.__connstr);
-            List<Person> data = context.ListPerson();
-            return Ok(data);
+            try
+            {
+                PersonContext context = new PersonContext(this.__connstr);
+                List<Person> data = context.ListPerson();
+                return Ok(data);
+            }
+            catch (Exception ex) {
+                return StatusCode(500, $"Terjadi kesalahan: {ex.Message}");
+            }
+            
 
         }
     }

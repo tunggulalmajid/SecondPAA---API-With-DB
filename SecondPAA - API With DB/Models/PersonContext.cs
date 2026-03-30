@@ -35,8 +35,8 @@ namespace SecondPAA___API_With_DB.Models
                 cmd.Dispose();
                 db.closeConnection();
             }
-            catch (Exception ex) { 
-                __ErrorMsg = ex.Message;
+            catch (Exception ex) {
+                throw new Exception("Error: " + ex.Message);
             }
             return listPerson;
         }

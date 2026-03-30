@@ -6,27 +6,19 @@ namespace SecondPAA___API_With_DB.Helper
     {
         private NpgsqlConnection connection;
         private string __constr;
-        private string __ErrorMsg;
 
         public SqlDBHelper(string __constr)
         {
           
             this.__constr = __constr;
             connection = new NpgsqlConnection();
-            connection.ConnectionString = __constr;
+            connection.ConnectionString = this.__constr;
         }
 
         public NpgsqlCommand GetNpgsqlCommand(string query)
         {
-            try
-            {
 
-                connection.Open();
-            }
-            catch (Exception ex)
-            {
-                __ErrorMsg = ex.Message;
-            }
+            connection.Open();
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = query;
