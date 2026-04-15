@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SecondPAA___API_With_DB.Models;
 
 namespace SecondPAA___API_With_DB.Controllers
@@ -14,7 +15,7 @@ namespace SecondPAA___API_With_DB.Controllers
             return View();
         }
 
-        [HttpGet("/api/person")]
+        [HttpGet("/api/person"), Authorize]
         public ActionResult<Person> ListPerson()
         {
             try
@@ -29,5 +30,7 @@ namespace SecondPAA___API_With_DB.Controllers
             
 
         }
+        //[HttpPost, Authorize]
+
     }
 }
